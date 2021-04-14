@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "888499196643",
+    "project_id": "login-1ef10",
+    "storage_bucket": "login-1ef10.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:888499196643:android:e08c1bab01d9a89f9eabd6",
+        "android_client_info": {
+          "package_name": "br.com.tanli.login"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "888499196643-5d1u8qtjuo6ldrcmkhvn565uqentdsv0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "br.com.tanli.login",
+            "certificate_hash": "d800f3f84df86845b6e1910be01224393f54a2f3"
+          }
+        },
+        {
+          "client_id": "888499196643-qjl2d0gipnurcc7s0uirh21qao0d624b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAeuK2wFG8A8B0JI25JaQrS2WmFx0apCBs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "888499196643-qjl2d0gipnurcc7s0uirh21qao0d624b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
