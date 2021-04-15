@@ -7,8 +7,12 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final double h_padding = 10.0, v_padding = 10.0;
-    return Material(
-      child: Container(
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Login"),
+        centerTitle: true,
+      ),
+      body: Container(
         padding: EdgeInsets.fromLTRB(
             h_padding * 5, v_padding * 10, h_padding * 5, 0.0),
         child: Form(
