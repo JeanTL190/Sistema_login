@@ -6,7 +6,8 @@ class UserModel extends Model {
   bool isLoading = false;
   FirebaseAuth _auth = FirebaseAuth.instance;
   User firebaseUser;
-
+  static UserModel of(BuildContext context) =>
+      ScopedModel.of<UserModel>(context);
   void userSignUp({
     @required String email,
     @required String password,

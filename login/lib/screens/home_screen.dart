@@ -3,7 +3,7 @@ import 'package:login/models/user_model.dart';
 import 'package:login/screens/login_screen.dart';
 import 'package:scoped_model/scoped_model.dart';
 
-class Home_Screen extends StatelessWidget {
+class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScopedModelDescendant<UserModel>(

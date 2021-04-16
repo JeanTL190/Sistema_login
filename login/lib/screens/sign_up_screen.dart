@@ -33,7 +33,7 @@ class SignUpScreen extends StatelessWidget {
                             email: _emailController.text,
                             password: _passController.text);
                         Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => Home_Screen()));
+                            builder: (context) => HomeScreen()));
                       },
                       child: Text("Cadastrar"))
                 ],

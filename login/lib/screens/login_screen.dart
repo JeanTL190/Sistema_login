@@ -38,7 +38,10 @@ class LoginScreen extends StatelessWidget {
                           border: OutlineInputBorder(), labelText: "E-mail"),
                       keyboardType: TextInputType.emailAddress,
                       validator: (text) {
-                        if (text.isEmpty) return "Digite seu e-mail";
+                        if (text.isEmpty)
+                          return "Digite seu e-mail";
+                        else
+                          return null;
                       },
                     ),
                     SizedBox(
@@ -49,7 +52,10 @@ class LoginScreen extends StatelessWidget {
                           border: OutlineInputBorder(), labelText: "Senha"),
                       obscureText: true,
                       validator: (text) {
-                        if (text.isEmpty) return "Digite sua senha";
+                        if (text.isEmpty)
+                          return "Digite sua senha";
+                        else
+                          return null;
                       },
                     ),
                     //Botões "Esqueci a senha" e "criar conta"
