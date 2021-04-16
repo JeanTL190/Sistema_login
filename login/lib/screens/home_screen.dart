@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:login/login.dart';
+import 'package:login/screens/login_screen.dart';
 
 class Home_Screen extends StatelessWidget {
-  Login login = Login();
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -10,7 +10,9 @@ class Home_Screen extends StatelessWidget {
         Text("Logado !"),
         ElevatedButton(
           onPressed: () {
-            login.signOut();
+            userSignOut();
+            Navigator.of(context)
+                .push(MaterialPageRoute(builder: (context) => LoginScreen()));
           },
           child: Text("Sair"),
           style: ButtonStyle(),

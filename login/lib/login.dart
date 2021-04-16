@@ -1,11 +1,12 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:scoped_model/scoped_model.dart';
 
-class Login {
+class Login extends Model {
   FirebaseAuth _auth = FirebaseAuth.instance;
   User firebaseUser;
 
-  void cadastrar({
+  void userSignUp({
     @required String email,
     @required String password,
   }) {
@@ -18,7 +19,7 @@ class Login {
     });
   }
 
-  void logar({
+  void userLogin({
     @required String email,
     @required String password,
   }) async {
@@ -30,7 +31,7 @@ class Login {
     });
   }
 
-  void signOut() async {
+  void userSignOut() async {
     //Desconecta da conta logada.
     await _auth.signOut();
     //Reseta o valor da variavel firebaseUser;

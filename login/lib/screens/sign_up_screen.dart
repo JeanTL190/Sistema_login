@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:login/login.dart';
+import 'package:login/screens/home_screen.dart';
 
 class SignUpScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final Login login = Login();
     final double hpadding = 10.0, vpadding = 10.0;
     final TextEditingController _emailController = TextEditingController();
     final TextEditingController _passController = TextEditingController();
@@ -26,9 +26,11 @@ class SignUpScreen extends StatelessWidget {
             ),
             ElevatedButton(
                 onPressed: () {
-                  login.cadastrar(
+                  userSignUp(
                       email: _emailController.text,
                       password: _passController.text);
+                  Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) => Home_Screen()));
                 },
                 child: Text("Cadastrar"))
           ],
