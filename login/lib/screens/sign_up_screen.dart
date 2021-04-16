@@ -6,6 +6,7 @@ import 'package:scoped_model/scoped_model.dart';
 class SignUpScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final GlobalKey<FormState> _form = GlobalKey<FormState>();
     final double hpadding = 10.0, vpadding = 10.0;
     final TextEditingController _emailController = TextEditingController();
     final TextEditingController _passController = TextEditingController();
@@ -19,26 +20,42 @@ class SignUpScreen extends StatelessWidget {
             return Container(
               padding: EdgeInsets.fromLTRB(
                   hpadding * 2, vpadding * 2, hpadding * 2, 0.0),
-              child: Column(
-                children: [
-                  TextFormField(
-                    decoration: InputDecoration(labelText: "E-mail"),
-                    controller: _emailController,
-                  ),
-                  TextFormField(
-                    decoration: InputDecoration(labelText: "Senha"),
-                    controller: _passController,
-                  ),
-                  ElevatedButton(
-                      onPressed: () {
-                        model.userSignUp(
-                            email: _emailController.text,
-                            password: _passController.text);
-                        Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => HomeScreen()));
+              child: Form(
+                key: _form,
+                child: Column(
+                  children: [
+                    TextFormField(
+                      decoration: InputDecoration(labelText: "E-mail"),
+                      controller: _emailController,
+                      validator: (text) {
+                        if (text.isEmpty) {
+                          return "Digite o e-mail";
+                        }
                       },
-                      child: Text("Cadastrar"))
-                ],
+                    ),
+                    TextFormField(
+                      decoration: InputDecoration(labelText: "Senha"),
+                      controller: _passController,
+                      validator: (text) {
+                        if (text.isEmpty) {
+                          return "Digite a senha";
+                        }
+                      },
+                    ),
+                    ElevatedButton(
+                        onPressed: () {
+                          if (_form.currentState.validate()) {
+                            model.userSignUp(
+                                email: _emailController.text,
+                                password: _passController.text);
+                            Navigator.of(context).pop();
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => HomeScreen()));
+                          }
+                        },
+                        child: Text("Cadastrar"))
+                  ],
+                ),
               ),
             );
           },
