@@ -6,15 +6,15 @@ class LoginScreen extends StatelessWidget {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
-    final double h_padding = 10.0, v_padding = 10.0;
+    final double hpadding = 10.0, vpadding = 10.0;
     return Scaffold(
       appBar: AppBar(
         title: Text("Login"),
         centerTitle: true,
       ),
       body: Container(
-        padding: EdgeInsets.fromLTRB(
-            h_padding * 5, v_padding * 10, h_padding * 5, 0.0),
+        padding:
+            EdgeInsets.fromLTRB(hpadding * 5, vpadding * 10, hpadding * 5, 0.0),
         child: Form(
           key: _formKey,
           child: SingleChildScrollView(
@@ -26,7 +26,7 @@ class LoginScreen extends StatelessWidget {
                   size: 120.0,
                 ),
                 SizedBox(
-                  height: v_padding * 2,
+                  height: vpadding * 2,
                 ),
                 //Campos de E-mail e Senha
                 TextFormField(
@@ -38,7 +38,7 @@ class LoginScreen extends StatelessWidget {
                   },
                 ),
                 SizedBox(
-                  height: v_padding * 2,
+                  height: vpadding * 2,
                 ),
                 TextFormField(
                   decoration: InputDecoration(
