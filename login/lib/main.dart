@@ -9,9 +9,7 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   runApp(
-    MaterialApp(
-      home: MyApp(),
-    ),
+    MyApp(),
   );
 }
 
@@ -21,7 +19,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return ScopedModel<UserModel>(
       model: UserModel(),
-      child: LoginScreen(),
+      child: MaterialApp(
+        home: LoginScreen(),
+      ),
     );
   }
 }
