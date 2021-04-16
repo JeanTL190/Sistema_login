@@ -34,7 +34,7 @@ class LoginScreen extends StatelessWidget {
                       border: OutlineInputBorder(), labelText: "E-mail"),
                   keyboardType: TextInputType.emailAddress,
                   validator: (text) {
-                    if (text.isEmpty) return "Digite seu E-mail";
+                    if (text.isEmpty) return "Digite seu e-mail";
                   },
                 ),
                 SizedBox(

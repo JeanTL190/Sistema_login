@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:login/login.dart';
 
 class SignUpScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final Login login = Login();
     final double hpadding = 10.0, vpadding = 10.0;
+    final TextEditingController _emailController = TextEditingController();
+    final TextEditingController _passController = TextEditingController();
     return Scaffold(
       appBar: AppBar(
         title: Text("Cadastrar"),
@@ -15,12 +19,18 @@ class SignUpScreen extends StatelessWidget {
         child: Column(
           children: [
             TextFormField(
-              decoration: InputDecoration(labelText: "Nome"),
+              decoration: InputDecoration(labelText: "E-mail"),
             ),
             TextFormField(
               decoration: InputDecoration(labelText: "Senha"),
             ),
-            ElevatedButton(onPressed: () {}, child: Text("Cadastrar"))
+            ElevatedButton(
+                onPressed: () {
+                  login.cadastrar(
+                      email: _emailController.text,
+                      password: _passController.text);
+                },
+                child: Text("Cadastrar"))
           ],
         ),
       ),
