@@ -1,23 +1,34 @@
 import 'package:flutter/material.dart';
-import 'package:login/login.dart';
+import 'package:login/models/user_model.dart';
 import 'package:login/screens/login_screen.dart';
+import 'package:scoped_model/scoped_model.dart';
 
 class Home_Screen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: <Widget>[
-        Text("Logado !"),
-        ElevatedButton(
-          onPressed: () {
-            userSignOut();
-            Navigator.of(context)
-                .push(MaterialPageRoute(builder: (context) => LoginScreen()));
-          },
-          child: Text("Sair"),
-          style: ButtonStyle(),
-        ),
-      ],
+    return ScopedModelDescendant<UserModel>(
+      builder: (context, child, model) {
+        if (model.isLoading)
+          return Center(
+            child: CircularProgressIndicator(),
+          );
+        else {
+          return Column(
+            children: <Widget>[
+              Text("Logado !"),
+              ElevatedButton(
+                onPressed: () {
+                  model.userSignOut();
+                  Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) => LoginScreen()));
+                },
+                child: Text("Sair"),
+                style: ButtonStyle(),
+              ),
+            ],
+          );
+        }
+      },
     );
   }
 }
