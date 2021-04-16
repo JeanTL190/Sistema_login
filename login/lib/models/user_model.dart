@@ -9,34 +9,45 @@ class UserModel extends Model {
   static UserModel of(BuildContext context) =>
       ScopedModel.of<UserModel>(context);
 
-  void userSignUp({
-    @required String email,
-    @required String password,
-  }) {
+  void userSignUp(
+      {@required String email,
+      @required String password,
+      @required VoidCallback onSucess,
+      @required VoidCallback onFail}) async {
     isLoading = true;
     notifyListeners();
     //Cria um novo login/user com email e senha passados;
     _auth
         .createUserWithEmailAndPassword(email: email, password: password)
-        .then((user) {
+        .then((user) async {
       // Salva o user na variavel firebaseUser;
       firebaseUser = user.user;
+      onSucess();
       isLoading = false;
       notifyListeners();
     }).catchError((e) {
+      onFail();
       isLoading = false;
       notifyListeners();
     });
   }
 
-  void userRecPassword(String email) {
-    _auth.sendPasswordResetEmail(email: email);
+  void userRecPassword(
+      {@required String email,
+      @required VoidCallback onSucess,
+      @required VoidCallback onFail}) {
+    _auth.sendPasswordResetEmail(email: email).then((value) {
+      onSucess();
+    }).catchError((e) {
+      onFail();
+    });
   }
 
-  void userLogin({
-    @required String email,
-    @required String password,
-  }) async {
+  void userLogin(
+      {@required String email,
+      @required String password,
+      @required VoidCallback onSucess,
+      @required VoidCallback onFail}) async {
     isLoading = true;
     notifyListeners();
     //Loga no login/user com email e senha passados;
@@ -44,9 +55,11 @@ class UserModel extends Model {
         .signInWithEmailAndPassword(email: email, password: password)
         .then((user) async {
       firebaseUser = user.user;
+      onSucess();
       isLoading = false;
       notifyListeners();
     }).catchError((e) {
+      onFail();
       isLoading = false;
       notifyListeners();
     });
