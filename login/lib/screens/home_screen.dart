@@ -14,6 +14,7 @@ class HomeScreen extends StatelessWidget {
           );
         else {
           return Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Text("Logado !"),
               ElevatedButton(
