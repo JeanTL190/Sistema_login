@@ -23,9 +23,11 @@ class SignUpScreen extends StatelessWidget {
                 children: [
                   TextFormField(
                     decoration: InputDecoration(labelText: "E-mail"),
+                    controller: _emailController,
                   ),
                   TextFormField(
                     decoration: InputDecoration(labelText: "Senha"),
+                    controller: _passController,
                   ),
                   ElevatedButton(
                       onPressed: () {

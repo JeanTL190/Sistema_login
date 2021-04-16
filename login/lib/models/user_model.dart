@@ -8,6 +8,7 @@ class UserModel extends Model {
   User firebaseUser;
   static UserModel of(BuildContext context) =>
       ScopedModel.of<UserModel>(context);
+
   void userSignUp({
     @required String email,
     @required String password,
@@ -17,7 +18,7 @@ class UserModel extends Model {
     //Cria um novo login/user com email e senha passados;
     _auth
         .createUserWithEmailAndPassword(email: email, password: password)
-        .then((user) async {
+        .then((user) {
       // Salva o user na variavel firebaseUser;
       firebaseUser = user.user;
       isLoading = false;
@@ -26,6 +27,10 @@ class UserModel extends Model {
       isLoading = false;
       notifyListeners();
     });
+  }
+
+  void userRecPassword(String email) {
+    _auth.sendPasswordResetEmail(email: email);
   }
 
   void userLogin({
