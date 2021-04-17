@@ -20,7 +20,8 @@ class HomeScreen extends StatelessWidget {
               ElevatedButton(
                 onPressed: () {
                   model.userSignOut();
-                  Navigator.of(context).pop();
+                  Navigator.of(context).pushReplacement(
+                      MaterialPageRoute(builder: (context) => LoginScreen()));
                 },
                 child: Text("Sair"),
                 style: ButtonStyle(),

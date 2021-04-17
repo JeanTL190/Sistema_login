@@ -35,8 +35,9 @@ class RecPassScreen extends StatelessWidget {
                 onPressed: () {
                   if (_form.currentState.validate()) {
                     UserModel.of(context).userRecPassword(
-                      email: _emailController.text,
-                    );
+                        email: _emailController.text,
+                        onFail: () {},
+                        onSucess: () {});
                   }
                 },
                 child: Text("Enviar"),

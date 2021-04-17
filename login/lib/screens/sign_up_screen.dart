@@ -69,11 +69,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
     );
   }
 
-  //Função caso o login seja bem-sucedido -> troca de tela
+  //Função caso o login seja bem-sucedido
   void _onLoginSuccess() {
+    //Mudança de tela
     Navigator.of(context).pop();
     Navigator.of(context)
         .push(MaterialPageRoute(builder: (context) => HomeScreen()));
+    //CODE
   }
 
   //Função caso o login falhe

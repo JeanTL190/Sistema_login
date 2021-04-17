@@ -5,6 +5,7 @@ import 'package:login/screens/rec_pass_screen.dart';
 import 'package:login/screens/sign_up_screen.dart';
 import 'package:scoped_model/scoped_model.dart';
 
+//Tela de Login padrão com informações para o Usuário colocar E-mail e Senha
 class LoginScreen extends StatefulWidget {
   @override
   _LoginScreenState createState() => _LoginScreenState();
@@ -114,9 +115,11 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   void _onLoginSuccess() {
+    //Mudança de tela
     Navigator.of(context).pop();
     Navigator.of(context)
         .push(MaterialPageRoute(builder: (context) => HomeScreen()));
+    //CODE
   }
 
   //Função caso o login falhe
@@ -124,4 +127,3 @@ class _LoginScreenState extends State<LoginScreen> {
     //CODE
   }
 }
-//Tela de Login padrão com informações para o Usuário colocar E-mail e Senha
