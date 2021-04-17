@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:login/models/user_model.dart';
+import 'package:login/screens/rec_pass_screen.dart';
 import 'package:login/screens/sign_up_screen.dart';
 import 'package:scoped_model/scoped_model.dart';
 
@@ -70,7 +71,10 @@ class LoginScreen extends StatelessWidget {
                           child: Text("Criar conta"),
                         ),
                         TextButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => RecPassScreen()));
+                          },
                           child: Text("Esqueci a senha"),
                         )
                       ],
