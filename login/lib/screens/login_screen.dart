@@ -1,12 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:login/models/user_model.dart';
+import 'package:login/screens/home_screen.dart';
 import 'package:login/screens/rec_pass_screen.dart';
 import 'package:login/screens/sign_up_screen.dart';
 import 'package:scoped_model/scoped_model.dart';
 
-//Tela de Login padrão com informações para o Usuário colocar E-mail e Senha
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
+  @override
+  _LoginScreenState createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     final double hpadding = 10.0, vpadding = 10.0;
@@ -35,6 +42,7 @@ class LoginScreen extends StatelessWidget {
                     ),
                     //Campos de E-mail e Senha
                     TextFormField(
+                      controller: _emailController,
                       decoration: InputDecoration(
                           border: OutlineInputBorder(), labelText: "E-mail"),
                       keyboardType: TextInputType.emailAddress,
@@ -49,6 +57,7 @@ class LoginScreen extends StatelessWidget {
                       height: vpadding * 2,
                     ),
                     TextFormField(
+                      controller: _passController,
                       decoration: InputDecoration(
                           border: OutlineInputBorder(), labelText: "Senha"),
                       obscureText: true,
@@ -84,7 +93,11 @@ class LoginScreen extends StatelessWidget {
                     ElevatedButton(
                       onPressed: () {
                         if (_formKey.currentState.validate()) {
-                          print("Entrou");
+                          model.userLogin(
+                              email: _emailController.text,
+                              password: _passController.text,
+                              onSucess: _onLoginSuccess,
+                              onFail: _onLoginFail);
                         }
                       },
                       child: Text("Entrar"),
@@ -99,4 +112,16 @@ class LoginScreen extends StatelessWidget {
       ),
     );
   }
+
+  void _onLoginSuccess() {
+    Navigator.of(context).pop();
+    Navigator.of(context)
+        .push(MaterialPageRoute(builder: (context) => HomeScreen()));
+  }
+
+  //Função caso o login falhe
+  void _onLoginFail() {
+    //CODE
+  }
 }
+//Tela de Login padrão com informações para o Usuário colocar E-mail e Senha
